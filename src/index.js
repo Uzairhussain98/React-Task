@@ -1,17 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+function Room() {
+  const [islit, setlit] = React.useState(false);
+  const [temp , settemp] = React.useState(22)
+  const brightness = islit ? "lit" : "dark";
+
+  return (
+   <div className={`room ${brightness}`}> Room Is {islit ? 'LIT' : 'DARK' }
+   <br/>
+   <br/>
+   Temperature is {temp}
+  <br/>
+  <button onClick={() =>  setlit(true)}>On</button>
+  <button onClick={() =>  setlit(false)}>Off</button>
+  <br/>
+  <button onClick={() =>  settemp(temp+1)}>+Increase</button>
+  <button onClick={() =>  settemp(temp-1)}>Decrease</button>
+
+
+  
+  </div>  
+
+  );
+
+}
+
+ReactDOM.render( 
+  <Room/>,
   document.getElementById('root')
-);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+);
